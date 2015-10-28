@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Plenty Of Riffs</title>
+    </head>
+
+    <body>
+        <div>{% block body_block %}{% endblock %}</div>
+
+        <div>
+            <ul>
+            {% if user.is_authenticated %}
+                <li><a href="{% url 'auth_logout' %}?next=/matchmaker/">Logout</a></li>
+            {% else %}
+                <li><a href="{% url 'registration_register' %}">Register</a></li>
+                <li><a href="{% url 'auth_login' %}">Login</a></li>
+            {% endif %}
+
+            </ul>
+        </div>
+    </body>
+</html>

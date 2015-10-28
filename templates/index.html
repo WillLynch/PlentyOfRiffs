@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% load staticfiles %}
+
+{% block body_block %}
+
+        <h1>Plenty Of Riffs Homepage</h1>
+        hello world! <strong>{{ boldmessage }}</strong><br />
+        <img src="{% static "images/miles.jpg" %}" alt="Picture of Rango" height="60"/> <!-- New line -->
+{% endblock %}
