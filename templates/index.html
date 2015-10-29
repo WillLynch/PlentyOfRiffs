@@ -6,5 +6,6 @@
 
         <h1>Plenty Of Riffs Homepage</h1>
         hello world! <strong>{{ boldmessage }}</strong><br />
-        <img src="{% static "images/miles.jpg" %}" alt="Picture of Rango" height="60"/> <!-- New line -->
+        <img src="{% static "images/miles.jpg" %}" alt="Picture of Miles" height="60"/> <!-- New line -->
+        <a href="{% url 'add_instrument' %}">Add an instrument to your profile</a>
 {% endblock %}
