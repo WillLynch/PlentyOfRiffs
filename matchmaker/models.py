@@ -7,12 +7,25 @@ INSTRUMENT_CHOICES = (
     ("Accordion", "Accordion")
 )
 
+LOCATION_CHOICES = (
+    ("Vancouver","Vancouver"),
+    ("Victoria","Victoria")
+)
+
+GENDER_CHOICES = (
+    ("Male", "M"),
+    ("Female", "F"),
+    ("Other", "O")
+)
+
 
 class UserProfile(models.Model):
     """extends the built in User model"""
     user = models.OneToOneField(User, primary_key=True)
-    birth_date = models.DateField()
-    gender = models.CharField(max_length=100)
+    birth_date = models.DateField(null=True)
+    gender = models.CharField(max_length=1, default="")
+    location = models.CharField(max_length=50,choices=LOCATION_CHOICES, default="")
+    bio = models.CharField(max_length=1000, default="")
 
 
 class Instrument(models.Model):

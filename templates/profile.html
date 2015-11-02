@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block body_block %}
+
+        <h1>My Profile</h1>
+        <h2>Personal Info</h2>
+        {% if profile %}
+            <ul>
+            <li><strong>Birthdate: </strong>{{  profile.birth_date }}</li>
+            <li><strong>Gender: </strong>{{  profile.gender }}</li>
+            <li><strong>Location: </strong>{{  profile.location }}</li>
+            <li><strong>Bio: </strong>{{  profile.bio }}</li>
+            </ul>
+        {% endif %}
+        <a href="{% url 'edit_personal_info' %}">Edit</a>
+        <h2>My Instruments</h2>
+        {% if instruments %}
+            <ul>
+                {% for instrument in instruments %}
+                <li>{{ instrument.instrument_name }}</li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <strong>You have not added any instruments.</strong>
+        {% endif %}
+        <a href="{% url 'add_instrument' %}">Add an instrument to your profile</a>
+{% endblock %}

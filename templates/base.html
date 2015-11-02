@@ -6,11 +6,11 @@
     </head>
 
     <body>
-        <div>{% block body_block %}{% endblock %}</div>
 
         <div>
             <ul>
             {% if user.is_authenticated %}
+                <li><a href="{% url 'profile' %}">My Profile</a></li>
                 <li><a href="{% url 'auth_logout' %}?next=/matchmaker/">Logout</a></li>
             {% else %}
                 <li><a href="{% url 'registration_register' %}">Register</a></li>
@@ -19,5 +19,7 @@
 
             </ul>
         </div>
+        <div>{% block body_block %}{% endblock %}</div>
+
     </body>
 </html>
