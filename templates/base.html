@@ -9,6 +9,7 @@
 
         <div>
             <ul>
+                <li><a href="{% url 'index' %}">Home</a></li>
             {% if user.is_authenticated %}
                 <li><a href="{% url 'profile' %}">My Profile</a></li>
                 <li><a href="{% url 'auth_logout' %}?next=/matchmaker/">Logout</a></li>

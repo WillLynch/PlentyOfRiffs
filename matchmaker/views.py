@@ -30,7 +30,12 @@ def add_instrument(request):
 
 @login_required
 def profile(request):
-    user_profile = UserProfile.objects.get(user=request.user)
+    try:
+        user_profile = UserProfile.objects.get(user=request.user)
+    except UserProfile.DoesNotExist:
+        user_profile = UserProfile(user=request.user)
+        user_profile.save()
+
     user_instrument_list = Instrument.objects.filter(profile=request.user)
     context_dict = {'instruments': user_instrument_list, 'profile': user_profile}
     return render(request, 'profile.html', context_dict)
