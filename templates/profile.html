@@ -10,6 +10,9 @@
             <li><strong>Gender: </strong>{{  profile.gender }}</li>
             <li><strong>Location: </strong>{{  profile.location }}</li>
             <li><strong>Bio: </strong>{{  profile.bio }}</li>
+            <li><strong>First Name:</strong> {{ profile.first_name }}</li>
+            <li><strong>Last Name:</strong>{{ profile.last_name }}</li>
+            <li><strong>Email:</strong>{{ profile.user.email }}</li>
             </ul>
         {% endif %}
         <a href="{% url 'edit_personal_info' %}">Edit</a>
