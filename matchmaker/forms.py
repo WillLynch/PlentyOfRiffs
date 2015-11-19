@@ -15,4 +15,4 @@ class AddInstrumentForm(forms.ModelForm):
 class EditPersonalInfo(forms.ModelForm):
     class Meta:
         model = UserProfile
-        fields = ['birth_date', 'gender', 'location', 'bio', 'first_name', 'last_name']
+        fields = ['first_name', 'last_name', 'gender', 'birth_date', 'location', 'bio']

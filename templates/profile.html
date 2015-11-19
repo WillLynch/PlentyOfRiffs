@@ -6,13 +6,13 @@
         <h2>Personal Info</h2>
         {% if profile %}
             <ul>
-            <li><strong>Birthdate: </strong>{{  profile.birth_date }}</li>
-            <li><strong>Gender: </strong>{{  profile.gender }}</li>
-            <li><strong>Location: </strong>{{  profile.location }}</li>
-            <li><strong>Bio: </strong>{{  profile.bio }}</li>
             <li><strong>First Name:</strong> {{ profile.first_name }}</li>
             <li><strong>Last Name:</strong>{{ profile.last_name }}</li>
+            <li><strong>Gender: </strong>{{  profile.gender }}</li>
+            <li><strong>Birthdate: </strong>{{  profile.birth_date }}</li>
             <li><strong>Email:</strong>{{ profile.user.email }}</li>
+            <li><strong>Location: </strong>{{  profile.location }}</li>
+            <li><strong>Bio: </strong>{{  profile.bio }}</li>
             </ul>
 
         {% endif %}
@@ -21,7 +21,7 @@
         {% if instruments %}
             <ul>
                 {% for instrument in instruments %}
-                <li>{{ instrument.instrument_name }}</li>
+                <li><strong>{{ instrument.instrument_name }}:</strong> {{ instrument.years_of_experience }} year(s)</li>
                 {% endfor %}
             </ul>
         {% else %}
