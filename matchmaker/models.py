@@ -102,8 +102,8 @@ class Instrument(models.Model):
     years_of_experience = models.IntegerField()
 
 class Genre(models.Model):
+    profile = models.ForeignKey(User)
     genre_name = models.CharField(max_length=50, choices=GENRE_CHOICES)
-    instrument = models.ManyToManyField(Instrument)
 
 class Ensemble(models.Model):
     musicians = models.ManyToManyField(UserProfile)

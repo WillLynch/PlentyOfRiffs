@@ -1,5 +1,5 @@
 from django import forms
-from matchmaker.models import Instrument, UserProfile, INSTRUMENT_CHOICES, LOCATION_CHOICES, GENDER_CHOICES
+from matchmaker.models import Instrument, UserProfile, Genre, INSTRUMENT_CHOICES, LOCATION_CHOICES, GENDER_CHOICES, GENRE_CHOICES
 
 
 class AddInstrumentForm(forms.ModelForm):
@@ -11,6 +11,11 @@ class AddInstrumentForm(forms.ModelForm):
         model = Instrument
         fields = ('instrument_name', 'years_of_experience')
 
+class AddGenres(forms.ModelForm):
+    genre_name = forms.ChoiceField(choices=GENRE_CHOICES)
+    class Meta:
+        model = Genre
+        fields = ['genre_name']
 
 class EditPersonalInfo(forms.ModelForm):
     class Meta:

@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block body_block %}
+
+    <h1>Add a genre</h1>
+
+    <form id="add_genre" method="post" action="/matchmaker/add_genre/">
+        {% csrf_token %}
+        {{ form }}
+        <input type="submit" name="submit" value="Add Genre" />
+    </form>
+
+{% endblock %}

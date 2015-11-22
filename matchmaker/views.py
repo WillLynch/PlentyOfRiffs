@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from matchmaker.forms import AddInstrumentForm, EditPersonalInfo
-from matchmaker.models import Instrument, UserProfile
+from matchmaker.forms import AddInstrumentForm, EditPersonalInfo, AddGenres
+from matchmaker.models import Instrument, UserProfile, Genre
 from django.contrib.auth.decorators import login_required
 
 
@@ -21,12 +21,29 @@ def add_instrument(request):
             instrument_form.save()
 
             # The user will be shown the homepage.
-            return index(request)
+            return profile(request)
     else:
         form = AddInstrumentForm()
 
     return render(request, 'add_instrument.html', {'form': form})
 
+
+@login_required
+def add_genre(request):
+    if request.method == 'POST':
+        form = AddGenres(request.POST)
+        if form.is_valid():
+            # Save the new category to the database.
+            genre_form = form.save(commit=False)
+            genre_form.profile = request.user
+            genre_form.save()
+
+            # The user will be shown the homepage.
+            return profile(request)
+    else:
+        form = AddGenres()
+
+    return render(request, 'add_genre.html', {'form': form})
 
 @login_required
 def profile(request):
@@ -35,9 +52,9 @@ def profile(request):
     except UserProfile.DoesNotExist:
         user_profile = UserProfile(user=request.user)
         user_profile.save()
-
+    user_genre_list = Genre.objects.filter(profile=request.user)
     user_instrument_list = Instrument.objects.filter(profile=request.user)
-    context_dict = {'instruments': user_instrument_list, 'profile': user_profile}
+    context_dict = {'instruments': user_instrument_list, 'genres': user_genre_list, 'profile': user_profile}
     return render(request, 'profile.html', context_dict)
 
 @login_required
@@ -57,3 +74,9 @@ def edit_personal_info(request):
         form = EditPersonalInfo(instance=user_profile)
 
     return render(request, 'edit_personal_info.html', {'form': form})
+
+@login_required
+def matches(request):
+    users_in_area = UserProfile.objects.filter(location=request.user.userprofile.location)
+    context_dict = {'matches': users_in_area}
+    return render(request, 'matches.html', context_dict)

@@ -28,4 +28,15 @@
             <strong>You have not added any instruments.</strong>
         {% endif %}
         <a href="{% url 'add_instrument' %}">Add an instrument to your profile</a>
+        <h2>My Genres</h2>
+        {% if genres %}
+            <ul>
+                {% for genre in genres %}
+                <li><strong>{{ genre.genre_name }}</li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <strong>You have not added any genres.</strong>
+        {% endif %}
+        <a href="{% url 'add_genre' %}">Add a genre to your profile</a>
 {% endblock %}
