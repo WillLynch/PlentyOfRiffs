@@ -1,11 +1,13 @@
+
 <!DOCTYPE html>
+{% load staticfiles %}
 
 <html>
     <head>
-        <title>Plenty Of Riffs</title><link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="http://getbootstrap.com/examples/dashboard/dashboard.css" rel="stylesheet">
-
-
+        <title>Plenty Of Riffs</title>
+        <link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link href="http://getbootstrap.com/examples/dashboard/dashboard.css" rel="stylesheet">
+        <link href="{% static "style.css" %}" type="text/css" rel="stylesheet">
     </head>
 
     <body>
@@ -31,7 +33,7 @@
         </div>
         </div>
         </div>
-        <div>{% block body_block %}{% endblock %}</div>
+        {% block body_block %}{% endblock %}
 
     </body>
 </html>

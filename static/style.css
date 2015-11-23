@@ -1,0 +1,16 @@
+body {
+    padding-top: 50px;
+    padding-left: 10px;
+}
+
+.navbar-inverse {
+  border-bottom: 10px;
+}
+
+.navbar-header {
+    float: right;
+}
+
+h1 {
+
+}
