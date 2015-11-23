@@ -3,17 +3,30 @@
 {% load staticfiles %}
 
 {% block body_block %}
-
+<div class="container">
         <h1>Your Matches</h1>
 
-        {% if matches %}
-            <ul>
-                {% for match in matches %}
-                <li><strong>{{ match.first_name }}</strong></li>
-                {% endfor %}
-            </ul>
-        {% else %}
-            <strong>You have no matches.</strong>
-        {% endif %}
-
+            {% if matches %}
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>First name</th>
+                            <th>Instrument</th>
+                            <th>Genre</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                            {% for match in matches %}
+                                <tr>
+                                    <td>{{ match.first_name }}</td>
+                                    <td>{{ match.instrument }}</td>
+                                    <td>{{ match.genre }}</td>
+                                </tr>
+                            {% endfor %}
+                    </tbody>
+                </table>
+            {% else %}
+                <strong>You have no matches.</strong>
+            {% endif %}
+</div>
 {% endblock %}
