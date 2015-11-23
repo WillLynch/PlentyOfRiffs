@@ -21,7 +21,7 @@ def add_instrument(request):
             instrument_form.save()
 
             # The user will be shown the homepage.
-            return profile(request)
+            return (request)
     else:
         form = AddInstrumentForm()
 
@@ -77,6 +77,20 @@ def edit_personal_info(request):
 
 @login_required
 def matches(request):
-    users_in_area = UserProfile.objects.filter(location=request.user.userprofile.location)
-    context_dict = {'matches': users_in_area}
+    users_in_area = UserProfile.objects.filter(location=request.user.userprofile.location).exclude(user=request.user)
+    genres_in_common = {}
+    request_user_genres_query_set = Genre.objects.filter(profile=request.user)
+    request_user_genres_set = {x.genre_name for x in request_user_genres_query_set}
+
+    for user_profile in users_in_area:
+        user_profile_genres_query_set = Genre.objects.filter(profile=user_profile.user)
+        user_profile_genres_set = {x.genre_name for x in user_profile_genres_query_set}
+        intersect_number = len(user_profile_genres_set & request_user_genres_set)
+        genres_in_common[user_profile] = intersect_number
+
+    users_tuples = genres_in_common.items()
+    sorted_users = sorted(users_tuples,key=lambda x: x[1],reverse=True)
+    final_list = [x[0] for x in sorted_users]
+
+    context_dict = {'matches': final_list}
     return render(request, 'matches.html', context_dict)
