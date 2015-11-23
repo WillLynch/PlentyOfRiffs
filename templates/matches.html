@@ -13,14 +13,26 @@
                             <th>First name</th>
                             <th>Instrument</th>
                             <th>Genre</th>
+                            <th>Location</th>
+                            <th>Email</th>
                         </tr>
                     </thead>
                     <tbody>
                             {% for match in matches %}
                                 <tr>
                                     <td>{{ match.first_name }}</td>
-                                    <td>{{ match.instrument }}</td>
-                                    <td>{{ match.genre }}</td>
+                                    <td>
+                                        {% for i in match.user.instruments.all %}
+                                        {{ i.instrument_name }}
+                                    {% endfor %}
+                                    </td>
+                                    <td>
+                                    {% for i in match.user.genres.all %}
+                                        {{ i.genre_name }}
+                                    {% endfor %}
+                                    </td>
+                                    <td>{{ match.location }}</td>
+                                    <td>{{ match.user.email }}</td>
                                 </tr>
                             {% endfor %}
                     </tbody>

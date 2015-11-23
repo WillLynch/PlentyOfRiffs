@@ -97,12 +97,12 @@ class UserProfile(models.Model):
 
 
 class Instrument(models.Model):
-    profile = models.ForeignKey(User)
+    profile = models.ForeignKey(User, related_name="instruments")
     instrument_name = models.CharField(max_length=50, choices=INSTRUMENT_CHOICES)
     years_of_experience = models.IntegerField()
 
 class Genre(models.Model):
-    profile = models.ForeignKey(User)
+    profile = models.ForeignKey(User, related_name="genres")
     genre_name = models.CharField(max_length=50, choices=GENRE_CHOICES)
 
 class Ensemble(models.Model):
