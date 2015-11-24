@@ -43,8 +43,19 @@ INSTRUMENT_CHOICES = (
 )
 
 LOCATION_CHOICES = (
+    ("Calgary", "Calgary"),
+    ("Charlottetown", "Charlottetown"),
+    ("Edmonton", "Edmonton"),
+    ("Halifax", "Halifax"),
+    ("Manitoba", "Manitoba"),
+    ("Montreal", "Montreal"),
+    ("Ottawa", "Ottawa"),
+    ("Quebec", "Quebec"),
+    ("Saskatoon", "Saskatoon"),
+    ("St. Johns", "St. Johns"),
+    ("Toronto", "Toronto"),
     ("Vancouver","Vancouver"),
-    ("Victoria","Victoria")
+    ("Victoria","Victoria"),
 )
 
 GENDER_CHOICES = (

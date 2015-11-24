@@ -21,7 +21,7 @@ def add_instrument(request):
             instrument_form.save()
 
             # The user will be shown the homepage.
-            return (request)
+            return profile(request)
     else:
         form = AddInstrumentForm()
 
