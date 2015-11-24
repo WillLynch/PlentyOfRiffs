@@ -2,7 +2,7 @@
 {% load staticfiles %}
 
 {% block body_block %}
-
+<div class="container">
     <h1>Login</h1>
             <form method="post" action="">
                     {% csrf_token %}
@@ -11,6 +11,7 @@
                     <input type="submit" value="Log in" />
                     <input type="hidden" name="next" value="{{ next }}" />
                     </form>
-
+            <p></p>
             <p>Not  a member? <a href="{% url 'registration_register' %}">Register</a>!</p>
+</div>
 {% endblock %}
