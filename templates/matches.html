@@ -25,12 +25,12 @@
                                     <td>{{ match.last_name }}</td>
                                     <td>
                                         {% for i in match.user.instruments.all %}
-                                        {{ i.instrument_name }}
+                                        {{ i.instrument_name }} <em>-{{ i.years_of_experience }}yrs,</em>
                                     {% endfor %}
                                     </td>
                                     <td>
                                     {% for i in match.user.genres.all %}
-                                        {{ i.genre_name }}
+                                        {{ i.genre_name }},
                                     {% endfor %}
                                     </td>
                                     <td>{{ match.location }}</td>
